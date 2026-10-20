@@ -95,10 +95,13 @@ NOTE: I am in no way affiliated with Moffein or the RiskyMod team.
 	- Fixed Infinity Codex only working for the host in multiplayer.
 - **Sandswept:**
 	- Fixed Inferno and Voltaic drones on drone vendors having a broken hurtbox. Explosions that reached it dealt no damage, and delayed ones like the Tanker's repeated endlessly.
+- **Simulacrum Additions:**
+	- Fixed family waves being picked on stages where part of the family can't spawn (like the Alloy Vulture family on Simulacrum's Aphelian Sanctuary), which left the wave empty until the game's failsafe ended it.
 - **Vanilla:**
 	- Fixed Ukulele and Safer Spaces descriptions being one stack short. The Ukulele fix turns off with RiskyMod's Ukulele changes, and the Safer Spaces fix with RiskyFixes' *Safer Spaces Cooldown*.
 	- Fixed stunning, freezing or shocking the Solus Wing's pods throwing an error and repeating the melee hit that caused it.
 	- Fixed bodies without a wings model (like monsters in Simulacrum's Flight waves) throwing an error when dying with Milky Chrysalis, which cut the rest of their death code short.
+	- Fixed stat tracking throwing an error on deaths of some unregistered (usually modded) bodies, which skipped the rest of the game's update for that frame.
 
 ## Disclaimer
 

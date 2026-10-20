@@ -12,6 +12,7 @@ internal static class Mods
     public const string SANDSWEPT = "com.TeamSandswept.Sandswept";
     public const string STARSTORM2 = "com.TeamMoonstorm.Starstorm2";
     public const string SPIKESTRIP = "com.groovesalad.GrooveSaladSpikestripContent";
+    public const string SIMULACRUM_ADDITIONS = "Wolfo.SimulacrumAdditions";
     public const string LOOKING_GLASS = "droppod.lookingglass";
     public const string HERETIC = "com.Moffein.Heretic";
 

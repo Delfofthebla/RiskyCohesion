@@ -23,6 +23,7 @@ namespace RiskyCohesion;
 [BepInDependency(Mods.SANDSWEPT, BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency(Mods.STARSTORM2, BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency(Mods.SPIKESTRIP, BepInDependency.DependencyFlags.SoftDependency)]
+[BepInDependency(Mods.SIMULACRUM_ADDITIONS, BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency(Mods.LOOKING_GLASS, BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency(RiskOfOptionsMenu.GUID, BepInDependency.DependencyFlags.SoftDependency)]
 [NetworkCompatibility(CompatibilityLevel.NoNeedForSync)]
@@ -38,6 +39,7 @@ public class RiskyCohesionPlugin : BaseUnityPlugin
     private bool _hasSandswept;
     private bool _hasStarstorm;
     private bool _hasSpikestrip;
+    private bool _hasSimulacrumAdditions;
     private bool _hasLookingGlass;
 
     private void Awake()
@@ -55,6 +57,7 @@ public class RiskyCohesionPlugin : BaseUnityPlugin
         _hasSandswept = Mods.IsLoaded(Mods.SANDSWEPT);
         _hasStarstorm = Mods.IsLoaded(Mods.STARSTORM2);
         _hasSpikestrip = Mods.IsLoaded(Mods.SPIKESTRIP);
+        _hasSimulacrumAdditions = Mods.IsLoaded(Mods.SIMULACRUM_ADDITIONS);
         _hasLookingGlass = Mods.IsLoaded(Mods.LOOKING_GLASS);
 
         PatchItemStats();
@@ -62,6 +65,7 @@ public class RiskyCohesionPlugin : BaseUnityPlugin
         PatchElites();
         PatchSurvivors();
         PatchDrones();
+        PatchWaves();
         PatchBalance();
         PatchVanilla();
 
@@ -128,6 +132,12 @@ public class RiskyCohesionPlugin : BaseUnityPlugin
             Install("removing Sandswept's drone display hurtboxes", SandsweptDroneDisplays.Install);
     }
 
+    private void PatchWaves()
+    {
+        if (_hasSimulacrumAdditions)
+            Install("limiting Simulacrum Additions' family waves to stages they can spawn on", SimulacrumAdditionsFamilyWaves.Install);
+    }
+
     private void PatchBalance()
     {
         if (_hasStarstorm)
@@ -143,6 +153,7 @@ public class RiskyCohesionPlugin : BaseUnityPlugin
         Install("correcting Safer Spaces' recharge tooltip", SaferSpacesRechargeTooltip.Install);
         Install("fixing stuns on the Solus Wing's pods", SolusWingPodStuns.Install);
         Install("fixing Milky Chrysalis wings on bodies without a wings model", MilkyChrysalisWings.Install);
+        Install("skipping death stats of unregistered bodies", UnregisteredBodyDeaths.Install);
     }
 
     private void PatchItemStats()
