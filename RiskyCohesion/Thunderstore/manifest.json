@@ -1,0 +1,10 @@
+{
+  "name": "Risky_Cohesion",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/Delfofthebla/RiskyCohesion",
+  "description": "Extends the RiskyMod suite's rules to items and elites from other content mods, and keeps LookingGlass' item stats in line with them.",
+  "dependencies": [
+    "bbepis-BepInExPack-5.4.2122",
+    "RiskofThunder-R2API_Core-5.3.0"
+  ]
+}

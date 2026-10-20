@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <AssemblyName>RiskyCohesion</AssemblyName>
+        <RootNamespace>RiskyCohesion</RootNamespace>
+        <ThunderstorePackageName>Risky_Cohesion</ThunderstorePackageName>
+        <Author>Delfofthebla</Author>
+        <Version>1.0.0</Version>
+        <PluginVersionSource>RiskyCohesionPlugin.cs</PluginVersionSource>
+        <!-- R2API depends on MMHOOK.RoR2, which only ships .NET Framework builds; only its orig_ delegate types are used. -->
+        <NoWarn>$(NoWarn);NU1701</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.3"/>
+        <PackageReference Include="BepInEx.Core" Version="5.4.21"/>
+        <PackageReference Include="RiskOfRain2.GameLibs" Version="1.5.0-r.1" Publicize="true"/>
+        <PackageReference Include="UnityEngine.Modules" Version="2021.3.45" IncludeAssets="compile"/>
+        <PackageReference Include="R2API.Core" Version="5.3.0"/>
+        <PackageReference Include="R2API.Language" Version="1.1.0"/>
+        <PackageReference Include="Rune580.Mods.RiskOfRain2.RiskOfOptions" Version="2.8.6"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="RiskyMod" HintPath="$(ProfilePluginsDir)\Risky_Lives-RiskyMod\Risky_Lives-RiskyMod\RiskyMod.dll"/>
+        <Reference Include="EliteReworks2" HintPath="$(ProfilePluginsDir)\Moffein-EliteReworks\EliteReworks2.dll"/>
+        <Reference Include="Aetherium" HintPath="$(ProfilePluginsDir)\KomradeSpectre-Aetherium\Aetherium.dll" Publicize="true"/>
+        <Reference Include="Sandswept" HintPath="$(ProfilePluginsDir)\SandsweptTeam-Sandswept\Sandswept.dll" Publicize="true"/>
+        <Reference Include="Starstorm2" HintPath="$(ProfilePluginsDir)\TeamMoonstorm-Starstorm2\Starstorm2.dll" Publicize="true"/>
+        <Reference Include="MSU.Runtime" HintPath="$(ProfilePluginsDir)\TeamMoonstorm-MoonstormSharedUtils\MSU.Runtime.dll"/>
+        <Reference Include="Spikestrip2_0" HintPath="$(ProfilePluginsDir)\Phreel-Spikestrip2_0\Spikestrip2_0\Spikestrip2_0.dll" Publicize="true"/>
+        <Reference Include="LookingGlass" HintPath="$(ProfilePluginsDir)\DropPod-LookingGlass\LookingGlass\LookingGlass.dll" Publicize="true"/>
+    </ItemGroup>
+</Project>
