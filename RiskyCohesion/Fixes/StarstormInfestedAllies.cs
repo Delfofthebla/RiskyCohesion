@@ -23,7 +23,7 @@ internal static class StarstormInfestedAllies
 
     private static void SettleInfest(DamageReport death)
     {
-        var chirr = BefriendingChirr(death.victimMaster);
+        var chirr = ChirrFriends.BefriendingChirr(death.victimMaster);
         if (!chirr)
             return;
 
@@ -31,19 +31,8 @@ internal static class StarstormInfestedAllies
         if (!host)
             return;
 
-        Failsafe.Run("passing a Void Infestor's friendship to its host", () => PassFriendship(chirr, host));
+        Failsafe.Run("passing a Void Infestor's friendship to its host", () => PassFriendship(chirr, death.victimMaster, host));
         GrantBetrayed(chirr);
-    }
-
-    private static ChirrFriendController BefriendingChirr(CharacterMaster friend)
-    {
-        var owner = friend ? friend.minionOwnership.ownerMaster : null;
-        if (!owner || !owner.TryGetComponent<ChirrFriendController>(out var chirr))
-            return null;
-
-        return chirr.currentFriend.master == friend
-            ? chirr
-            : null;
     }
 
     private static CharacterMaster InfestedHost(CharacterBody infestor)
@@ -58,8 +47,10 @@ internal static class StarstormInfestedAllies
             .FirstOrDefault();
     }
 
-    private static void PassFriendship(ChirrFriendController chirr, CharacterMaster host)
+    private static void PassFriendship(ChirrFriendController chirr, CharacterMaster infestor, CharacterMaster host)
     {
+        chirr.RemoveFriend(infestor);
+
         // AddFriend reads the friend's current team to decide where releasing it returns it and whether to strip its Void affix; vanilla's infest leaves the host on the Void team.
         host.teamIndex = TeamIndex.Void;
         host.GetBody().teamComponent.teamIndex = TeamIndex.Void;

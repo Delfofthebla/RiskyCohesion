@@ -17,11 +17,14 @@
         <PackageReference Include="UnityEngine.Modules" Version="2021.3.45" IncludeAssets="compile"/>
         <PackageReference Include="R2API.Core" Version="5.3.0"/>
         <PackageReference Include="R2API.Language" Version="1.1.0"/>
+        <PackageReference Include="R2API.DamageType" Version="1.1.7"/>
+        <PackageReference Include="R2API.Execute" Version="1.1.3"/>
         <PackageReference Include="Rune580.Mods.RiskOfRain2.RiskOfOptions" Version="2.8.6"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="RiskyMod" HintPath="$(ProfilePluginsDir)\Risky_Lives-RiskyMod\Risky_Lives-RiskyMod\RiskyMod.dll"/>
+        <Reference Include="RiskyMod" HintPath="$(ProfilePluginsDir)\Risky_Lives-RiskyMod\Risky_Lives-RiskyMod\RiskyMod.dll" Publicize="true"/>
+        <Reference Include="RiskyTweaks" HintPath="$(ProfilePluginsDir)\Risky_Lives-RiskyTweaks\RiskyTweaks\RiskyTweaks.dll" Publicize="true"/>
         <Reference Include="EliteReworks2" HintPath="$(ProfilePluginsDir)\Moffein-EliteReworks\EliteReworks2.dll"/>
         <Reference Include="Aetherium" HintPath="$(ProfilePluginsDir)\KomradeSpectre-Aetherium\Aetherium.dll" Publicize="true"/>
         <Reference Include="Sandswept" HintPath="$(ProfilePluginsDir)\SandsweptTeam-Sandswept\Sandswept.dll" Publicize="true"/>
@@ -29,5 +32,14 @@
         <Reference Include="MSU.Runtime" HintPath="$(ProfilePluginsDir)\TeamMoonstorm-MoonstormSharedUtils\MSU.Runtime.dll"/>
         <Reference Include="Spikestrip2_0" HintPath="$(ProfilePluginsDir)\Phreel-Spikestrip2_0\Spikestrip2_0\Spikestrip2_0.dll" Publicize="true"/>
         <Reference Include="LookingGlass" HintPath="$(ProfilePluginsDir)\DropPod-LookingGlass\LookingGlass\LookingGlass.dll" Publicize="true"/>
+        <Reference Include="EnemyAbilities" HintPath="$(ProfilePluginsDir)\Skeletogne-EnemyAbilities\EnemyAbilities.dll"/>
+        <Reference Include="ArtificerExtended" HintPath="$(ProfilePluginsDir)\duckduckgreyduck-ArtificerExtended\ArtificerExtended.dll" Publicize="true"/>
+        <Reference Include="AncientScepter" HintPath="$(ProfilePluginsDir)\amogus_lovers-StandaloneAncientScepter\AncientScepter.dll" Publicize="true"/>
+        <Reference Include="RiskyFixes" HintPath="$(ProfilePluginsDir)\Risky_Lives-RiskyFixes\RiskyFixes.dll" Publicize="true"/>
+        <Reference Include="SneedHooks" HintPath="$(ProfilePluginsDir)\Risky_Lives-SneedHooks\SneedHooks.dll"/>
+        <Reference Include="StormboundFalseSon" HintPath="$(ProfilePluginsDir)\Bloonjitsu7-StormboundFalseSon\StormboundFalseSon.dll"/>
+        <Reference Include="Chef_Overcooked" HintPath="$(ProfilePluginsDir)\noodleGemo-Chef_Overcooked\Chef_Overcooked.dll"/>
+        <Reference Include="Eggs Skills" HintPath="$(ProfilePluginsDir)\egpimp-EggsSkills\Eggs Skills.dll" Publicize="true"/>
+        <Reference Include="Voidcrid" HintPath="$(ProfilePluginsDir)\Voidcrid-Voidcrid\Voidcrid.dll"/>
     </ItemGroup>
 </Project>

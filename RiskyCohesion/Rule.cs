@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using BepInEx.Configuration;
 using MonoMod.Cil;
 
@@ -28,7 +29,7 @@ internal class Rule(ConfigEntry<bool> enabled) : ISwitch
             ApplyNowAndOnChange(() => FollowSetting(subscribe, unsubscribe));
     }
 
-    public void Override(Func<float> read, Action<float> write, Func<float, float> rework)
+    public void Override<T>(Func<T> read, Action<T> write, Func<T, T> rework)
     {
         if (!SourceIsOn)
             return;
@@ -36,6 +37,12 @@ internal class Rule(ConfigEntry<bool> enabled) : ISwitch
         var original = read();
 
         ApplyNowAndOnChange(() => write(ValueInEffect(original, rework)));
+    }
+
+    public void MatchFields<T>(T source, T target, params string[] fieldNames)
+    {
+        foreach (var field in fieldNames.Select(name => typeof(T).GetField(name)))
+            Override(() => field.GetValue(target), value => field.SetValue(target, value), _ => field.GetValue(source));
     }
 
     public void ApplyNowAndOnChange(Action apply) => Enabled.ApplyNowAndOnChange(apply);
@@ -48,7 +55,7 @@ internal class Rule(ConfigEntry<bool> enabled) : ISwitch
             subscribe();
     }
 
-    private float ValueInEffect(float original, Func<float, float> rework) => IsOn
+    private T ValueInEffect<T>(T original, Func<T, T> rework) => IsOn
         ? rework(original)
         : original;
 }
